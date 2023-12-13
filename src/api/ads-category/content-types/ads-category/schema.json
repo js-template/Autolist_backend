@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ads_categories",
+  "info": {
+    "singularName": "ads-category",
+    "pluralName": "ads-categories",
+    "displayName": "Ads Category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}

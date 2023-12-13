@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "manage_ads",
+  "info": {
+    "singularName": "manage-ad",
+    "pluralName": "manage-ads",
+    "displayName": "Manage Ad"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}
