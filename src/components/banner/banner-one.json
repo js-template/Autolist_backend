@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_banner_banner_ones",
+  "info": {
+    "displayName": "BannerOne",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Image": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.image"
+    },
+    "Description": {
+      "type": "text"
+    }
+  }
+}

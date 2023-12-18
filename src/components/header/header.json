@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_menu_headers",
+  "info": {
+    "displayName": "Menu",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "Link": {
+      "type": "string"
+    }
+  }
+}

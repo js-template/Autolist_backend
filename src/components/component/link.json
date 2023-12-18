@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_component_links",
+  "info": {
+    "displayName": "Link",
+    "icon": "cursor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string"
+    },
+    "Link": {
+      "type": "string"
+    },
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "External",
+        "Internal"
+      ]
+    },
+    "Target": {
+      "type": "enumeration",
+      "enum": [
+        "_blank",
+        "_self"
+      ]
+    }
+  }
+}

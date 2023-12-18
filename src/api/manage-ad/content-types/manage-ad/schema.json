@@ -4,15 +4,55 @@
   "info": {
     "singularName": "manage-ad",
     "pluralName": "manage-ads",
-    "displayName": "Manage Ad"
+    "displayName": "Manage Ad",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
-      "type": "string"
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Condition": {
+      "type": "enumeration",
+      "enum": [
+        "Used",
+        "New"
+      ]
+    },
+    "Description": {
+      "type": "blocks",
+      "required": true
+    },
+    "Photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Price": {
+      "type": "biginteger"
+    },
+    "Catgeory": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ads-category.ads-category"
+    },
+    "Location": {
+      "type": "customField",
+      "customField": "plugin::google-maps.location-picker"
+    },
+    "Negotiable": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

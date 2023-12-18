@@ -633,6 +633,46 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface PluginGoogleMapsConfig extends Schema.SingleType {
+  collectionName: 'google_maps_configs';
+  info: {
+    singularName: 'config';
+    pluralName: 'configs';
+    displayName: 'Google Maps Config';
+  };
+  options: {
+    populateCreatorFields: false;
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    googleMapsKey: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<''>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::google-maps.config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::google-maps.config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -683,12 +723,29 @@ export interface ApiAdsCategoryAdsCategory extends Schema.CollectionType {
     singularName: 'ads-category';
     pluralName: 'ads-categories';
     displayName: 'Ads Category';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Name: Attribute.String;
+    Title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Icon: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -700,6 +757,43 @@ export interface ApiAdsCategoryAdsCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::ads-category.ads-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::ads-category.ads-category',
+      'oneToMany',
+      'api::ads-category.ads-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHeaderMainHeaderMain extends Schema.SingleType {
+  collectionName: 'header_mains';
+  info: {
+    singularName: 'header-main';
+    pluralName: 'header-mains';
+    displayName: 'TopMenu';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    HeaderOne: Attribute.Component<'header.topbar'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::header-main.header-main',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::header-main.header-main',
       'oneToOne',
       'admin::user'
     > &
@@ -707,29 +801,30 @@ export interface ApiAdsCategoryAdsCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiAdsLocationAdsLocation extends Schema.CollectionType {
-  collectionName: 'ads_locations';
+export interface ApiMainMenuMainMenu extends Schema.SingleType {
+  collectionName: 'main_menus';
   info: {
-    singularName: 'ads-location';
-    pluralName: 'ads-locations';
-    displayName: 'Ads Location';
+    singularName: 'main-menu';
+    pluralName: 'main-menus';
+    displayName: 'MainMenu';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
+    Logo: Attribute.Component<'header.logo'>;
+    menu: Attribute.Component<'header.header', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::ads-location.ads-location',
+      'api::main-menu.main-menu',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::ads-location.ads-location',
+      'api::main-menu.main-menu',
       'oneToOne',
       'admin::user'
     > &
@@ -743,12 +838,25 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
     singularName: 'manage-ad';
     pluralName: 'manage-ads';
     displayName: 'Manage Ad';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
+    Title: Attribute.String & Attribute.Required;
+    Condition: Attribute.Enumeration<['Used', 'New']>;
+    Description: Attribute.Blocks & Attribute.Required;
+    Photos: Attribute.Media;
+    Price: Attribute.BigInteger;
+    Catgeory: Attribute.Relation<
+      'api::manage-ad.manage-ad',
+      'oneToOne',
+      'api::ads-category.ads-category'
+    >;
+    Location: Attribute.JSON &
+      Attribute.CustomField<'plugin::google-maps.location-picker'>;
+    Negotiable: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -763,6 +871,76 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMessageMessage extends Schema.CollectionType {
+  collectionName: 'messages';
+  info: {
+    singularName: 'message';
+    pluralName: 'messages';
+    displayName: 'Message';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Sender: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    Receiver: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    ads: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'api::manage-ad.manage-ad'
+    >;
+    messages: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Banner: Attribute.Component<'banner.banner-one', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -782,10 +960,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'plugin::google-maps.config': PluginGoogleMapsConfig;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::ads-category.ads-category': ApiAdsCategoryAdsCategory;
-      'api::ads-location.ads-location': ApiAdsLocationAdsLocation;
+      'api::header-main.header-main': ApiHeaderMainHeaderMain;
+      'api::main-menu.main-menu': ApiMainMenuMainMenu;
       'api::manage-ad.manage-ad': ApiManageAdManageAd;
+      'api::message.message': ApiMessageMessage;
+      'api::page.page': ApiPagePage;
     }
   }
 }
