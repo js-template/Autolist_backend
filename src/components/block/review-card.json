@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_banner_banner_ones",
+  "collectionName": "components_block_review_cards",
   "info": {
-    "displayName": "BannerOne",
+    "displayName": "ReviewCard",
     "icon": "arrowRight",
     "description": ""
   },
@@ -13,10 +13,15 @@
     "Description": {
       "type": "text"
     },
-    "Image": {
+    "Button": {
       "type": "component",
       "repeatable": false,
-      "component": "component.image"
+      "component": "component.link"
+    },
+    "Reviews": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.icon-box"
     }
   }
 }

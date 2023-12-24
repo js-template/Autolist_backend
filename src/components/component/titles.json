@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_banner_banner_ones",
+  "collectionName": "components_component_titles",
   "info": {
-    "displayName": "BannerOne",
+    "displayName": "Titles",
     "icon": "arrowRight",
     "description": ""
   },
@@ -13,10 +13,10 @@
     "Description": {
       "type": "text"
     },
-    "Image": {
+    "Button": {
       "type": "component",
       "repeatable": false,
-      "component": "component.image"
+      "component": "component.link"
     }
   }
 }

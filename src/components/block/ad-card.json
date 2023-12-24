@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_banner_banner_ones",
+  "collectionName": "components_ads_ad_cards",
   "info": {
-    "displayName": "BannerOne",
+    "displayName": "AdCard",
     "icon": "arrowRight",
     "description": ""
   },
@@ -13,10 +13,15 @@
     "Description": {
       "type": "text"
     },
-    "Image": {
+    "ShowAds": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::manage-ad.manage-ad"
+    },
+    "Button": {
       "type": "component",
       "repeatable": false,
-      "component": "component.image"
+      "component": "component.link"
     }
   }
 }

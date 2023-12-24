@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_ads_category_cards",
+  "info": {
+    "displayName": "CategoryCard",
+    "icon": "arrowRight",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ads-category.ads-category"
+    },
+    "Button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.link"
+    }
+  }
+}

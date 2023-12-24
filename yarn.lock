@@ -2993,6 +2993,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/plugin-color-picker@npm:^4.15.5":
+  version: 4.15.5
+  resolution: "@strapi/plugin-color-picker@npm:4.15.5"
+  dependencies:
+    "@strapi/design-system": 1.13.0
+    "@strapi/helper-plugin": 4.15.5
+    "@strapi/icons": 1.13.0
+    prop-types: ^15.8.1
+    react-colorful: 5.6.1
+    react-intl: 6.4.1
+  peerDependencies:
+    "@strapi/strapi": ^4.4.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.2.0
+    styled-components: ^5.2.1
+  checksum: 69b99c0a0ac519562fbe8f11adac5c7a455cb1c8c3ae5c78602496468062b4b4d3520cd486466077c3e4a2712b66f41243c9baecd1e943752fb0e9b9bfdd64c8
+  languageName: node
+  linkType: hard
+
 "@strapi/plugin-content-manager@npm:4.15.5":
   version: 4.15.5
   resolution: "@strapi/plugin-content-manager@npm:4.15.5"
@@ -11372,6 +11392,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-colorful@npm:5.6.1":
+  version: 5.6.1
+  resolution: "react-colorful@npm:5.6.1"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: e432b7cb0df57e8f0bcdc3b012d2e93fcbcb6092c9e0f85654788d5ebfc4442536d8cc35b2418061ba3c4afb8b7788cc101c606d86a1732407921de7a9244c8d
+  languageName: node
+  linkType: hard
+
 "react-dnd-html5-backend@npm:15.1.3":
   version: 15.1.3
   resolution: "react-dnd-html5-backend@npm:15.1.3"
@@ -11463,6 +11493,15 @@ __metadata:
   peerDependencies:
     react: ">=16.3.0"
   checksum: a4998479dab7fc1c2799eddefb1870a9d881b5f71cfdf97979a9882e42f4bb50402d55335f308f461e735e01a06f46b16cc7b4e6bcb22c7a4a6f85a753c5c106
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:4.8.0":
+  version: 4.8.0
+  resolution: "react-icons@npm:4.8.0"
+  peerDependencies:
+    react: "*"
+  checksum: 4dbba7ad989c295b410e19b2a702722dae44368cb04b6515f9471353552f31ac80bd350f121d5bff79f81504b84039ede44d09e9f035f48bb1032e6eace126c4
   languageName: node
   linkType: hard
 
@@ -12896,11 +12935,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"strapi-plugin-custom-api@npm:latest":
+  version: 1.0.4
+  resolution: "strapi-plugin-custom-api@npm:1.0.4"
+  peerDependencies:
+    "@strapi/strapi": 4.x.x
+  checksum: 0152e15e6e018603de4f530c0a684881a6caba233e144b9adf9cf935bbda028508d4c25520170e289e55daafe295ff68edffc6e41d39a8c9f497d73f7b0276a9
+  languageName: node
+  linkType: hard
+
+"strapi-plugin-populate-deep@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "strapi-plugin-populate-deep@npm:3.0.1"
+  checksum: 0ec3213685a4a3235ca9b2feef966e529aab181464862bcb3d8114f2da5fe305cbe78bee1b0f94d2aaddcda6348e8769fa5515a8f21c6c2f312a371d25e2c3cc
+  languageName: node
+  linkType: hard
+
+"strapi-plugin-react-icons@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "strapi-plugin-react-icons@npm:0.2.1"
+  dependencies:
+    "@strapi/design-system": ^1.6.3
+    "@strapi/helper-plugin": ^4.6.0
+    "@strapi/icons": ^1.6.3
+    prop-types: ^15.8.1
+    react-icons: 4.8.0
+  peerDependencies:
+    "@strapi/strapi": ^4.14.5
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.3.4
+    styled-components: ^5.3.3 || ^6.1.0
+  checksum: 66fc942823574eed0f92003b85357dc35548d9db11a3489e23c4622dccbae6a857ed4bd034b5625c7aef6967e8ac2b3cf64e96a94e3069c857e4c70701db877a
+  languageName: node
+  linkType: hard
+
 "strapi@workspace:.":
   version: 0.0.0-use.local
   resolution: "strapi@workspace:."
   dependencies:
     "@amicaldo/strapi-google-maps": ^1.1.3
+    "@strapi/plugin-color-picker": ^4.15.5
     "@strapi/plugin-i18n": 4.15.5
     "@strapi/plugin-users-permissions": 4.15.4
     "@strapi/provider-upload-cloudinary": 4.15.4
@@ -12909,6 +12984,9 @@ __metadata:
     react: ^18.0.0
     react-dom: ^18.0.0
     react-router-dom: ^5.2.0
+    strapi-plugin-custom-api: latest
+    strapi-plugin-populate-deep: ^3.0.1
+    strapi-plugin-react-icons: ^0.2.1
     styled-components: ^5.2.1
   languageName: unknown
   linkType: soft

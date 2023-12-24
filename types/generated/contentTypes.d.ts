@@ -673,6 +673,51 @@ export interface PluginGoogleMapsConfig extends Schema.SingleType {
   };
 }
 
+export interface PluginReactIconsIconlibrary extends Schema.CollectionType {
+  collectionName: 'iconlibrary';
+  info: {
+    singularName: 'iconlibrary';
+    pluralName: 'iconlibraries';
+    displayName: 'IconLibrary';
+  };
+  options: {
+    draftAndPublish: false;
+    comment: '';
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    abbreviation: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 3;
+      }>;
+    isEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::react-icons.iconlibrary',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::react-icons.iconlibrary',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -722,7 +767,7 @@ export interface ApiAdsCategoryAdsCategory extends Schema.CollectionType {
   info: {
     singularName: 'ads-category';
     pluralName: 'ads-categories';
-    displayName: 'Ads Category';
+    displayName: 'Category';
     description: '';
   };
   options: {
@@ -740,7 +785,32 @@ export interface ApiAdsCategoryAdsCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    Icon: Attribute.Media &
+    Image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Link: Attribute.Component<'component.link'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Icon: Attribute.String &
+      Attribute.CustomField<'plugin::react-icons.icon'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<'api::ads-category.ads-category', 'Title'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -770,65 +840,157 @@ export interface ApiAdsCategoryAdsCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiHeaderMainHeaderMain extends Schema.SingleType {
-  collectionName: 'header_mains';
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
   info: {
-    singularName: 'header-main';
-    pluralName: 'header-mains';
-    displayName: 'TopMenu';
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'HomePage';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    HeaderOne: Attribute.Component<'header.topbar'>;
+    Banner: Attribute.Component<'banner.banner-one'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    AdsCategory: Attribute.Component<'component.titles'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    AdsBlock: Attribute.Component<'block.ad-card'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    CategoryBlock: Attribute.Component<'block.category-card'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ReviewBlock: Attribute.Component<'block.review-card'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::header-main.header-main',
+      'api::home-page.home-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::header-main.header-main',
+      'api::home-page.home-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToMany',
+      'api::home-page.home-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
-export interface ApiMainMenuMainMenu extends Schema.SingleType {
-  collectionName: 'main_menus';
+export interface ApiLayoutLayout extends Schema.SingleType {
+  collectionName: 'layouts';
   info: {
-    singularName: 'main-menu';
-    pluralName: 'main-menus';
-    displayName: 'MainMenu';
+    singularName: 'layout';
+    pluralName: 'layouts';
+    displayName: 'Layout';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Logo: Attribute.Component<'header.logo'>;
-    menu: Attribute.Component<'header.header', true>;
+    TopBar: Attribute.Component<'header.topbar'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Logo: Attribute.Component<'header.logo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MainMenu: Attribute.Component<'component.link', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Button: Attribute.Component<'component.link'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FooterOne: Attribute.Component<'widget.footer-one'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FooterTwo: Attribute.Component<'widget.footer-two'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FooterThree: Attribute.Component<'widget.footer-two'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::main-menu.main-menu',
+      'api::layout.layout',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::main-menu.main-menu',
+      'api::layout.layout',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::layout.layout',
+      'oneToMany',
+      'api::layout.layout'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -843,20 +1005,69 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Title: Attribute.String & Attribute.Required;
-    Condition: Attribute.Enumeration<['Used', 'New']>;
-    Description: Attribute.Blocks & Attribute.Required;
-    Photos: Attribute.Media;
-    Price: Attribute.BigInteger;
-    Catgeory: Attribute.Relation<
+    Title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Condition: Attribute.Enumeration<['Used', 'New']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    gallery: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Price: Attribute.BigInteger &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Category: Attribute.Relation<
       'api::manage-ad.manage-ad',
       'oneToOne',
       'api::ads-category.ads-category'
     >;
     Location: Attribute.JSON &
       Attribute.CustomField<'plugin::google-maps.location-picker'>;
-    Negotiable: Attribute.Boolean & Attribute.DefaultTo<false>;
+    Negotiable: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    Description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<'api::manage-ad.manage-ad', 'Title'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    featuredImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -872,6 +1083,12 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::manage-ad.manage-ad',
+      'oneToMany',
+      'api::manage-ad.manage-ad'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -921,12 +1138,12 @@ export interface ApiMessageMessage extends Schema.CollectionType {
   };
 }
 
-export interface ApiPagePage extends Schema.CollectionType {
-  collectionName: 'pages';
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
   info: {
-    singularName: 'page';
-    pluralName: 'pages';
-    displayName: 'Page';
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'Post';
     description: '';
   };
   options: {
@@ -934,13 +1151,17 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
   attributes: {
     Title: Attribute.String;
-    Banner: Attribute.Component<'banner.banner-one', true>;
+    slug: Attribute.UID<'api::post.post', 'Title'>;
+    Description: Attribute.RichText;
+    FeaturedImage: Attribute.Media;
+    Gallery: Attribute.Media;
+    Excerpt: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -961,13 +1182,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::google-maps.config': PluginGoogleMapsConfig;
+      'plugin::react-icons.iconlibrary': PluginReactIconsIconlibrary;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::ads-category.ads-category': ApiAdsCategoryAdsCategory;
-      'api::header-main.header-main': ApiHeaderMainHeaderMain;
-      'api::main-menu.main-menu': ApiMainMenuMainMenu;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::layout.layout': ApiLayoutLayout;
       'api::manage-ad.manage-ad': ApiManageAdManageAd;
       'api::message.message': ApiMessageMessage;
-      'api::page.page': ApiPagePage;
+      'api::post.post': ApiPostPost;
     }
   }
 }

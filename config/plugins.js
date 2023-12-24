@@ -14,11 +14,20 @@ module.exports = ({ env }) => ({
       },
       actionOptions: {
         upload: {},
+        uploadStream: {},
         delete: {},
       },
     },
   },
   'google-maps': {
     enabled: true,
-  }
+  },
+  'strapi-plugin-populate-deep': {
+    config: {
+      defaultDepth: 4, // Default is 5
+    }
+  },
+   "react-icons": true,
+
+
 });

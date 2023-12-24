@@ -4,7 +4,7 @@
   "info": {
     "singularName": "ads-category",
     "pluralName": "ads-categories",
-    "displayName": "Ads Category",
+    "displayName": "Category",
     "description": ""
   },
   "options": {
@@ -24,7 +24,7 @@
         }
       }
     },
-    "Icon": {
+    "Image": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -39,6 +39,42 @@
           "localized": true
         }
       }
+    },
+    "Description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "Link": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "component.link"
+    },
+    "Icon": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "customField": "plugin::react-icons.icon"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "Title"
     }
   }
 }

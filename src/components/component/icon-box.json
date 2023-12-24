@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_component_icon_boxes",
+  "info": {
+    "displayName": "IconBox",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Link": {
+      "type": "string"
+    },
+    "LinkType": {
+      "type": "enumeration",
+      "enum": [
+        "Internal",
+        "External"
+      ]
+    }
+  }
+}
