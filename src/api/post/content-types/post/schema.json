@@ -12,17 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "slug": {
-      "type": "uid",
-      "targetField": "Title"
+      "type": "uid"
     },
-    "Description": {
+    "description": {
       "type": "richtext"
     },
-    "FeaturedImage": {
+    "featuredImage": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -33,7 +32,7 @@
         "audios"
       ]
     },
-    "Gallery": {
+    "gallery": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -44,7 +43,7 @@
         "audios"
       ]
     },
-    "Excerpt": {
+    "excerpt": {
       "type": "text"
     }
   }

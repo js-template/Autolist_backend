@@ -7,7 +7,7 @@
   },
   "options": {},
   "attributes": {
-    "Announcement": {
+    "announcement": {
       "type": "string"
     },
     "menu": {

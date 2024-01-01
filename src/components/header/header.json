@@ -10,7 +10,7 @@
     "label": {
       "type": "string"
     },
-    "Link": {
+    "link": {
       "type": "string"
     }
   }

@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true,
       "pluginOptions": {
@@ -25,7 +25,7 @@
         }
       }
     },
-    "Condition": {
+    "condition": {
       "type": "enumeration",
       "enum": [
         "Used",
@@ -51,7 +51,7 @@
         }
       }
     },
-    "Price": {
+    "price": {
       "type": "biginteger",
       "pluginOptions": {
         "i18n": {
@@ -59,16 +59,16 @@
         }
       }
     },
-    "Category": {
+    "category": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::ads-category.ads-category"
     },
-    "Location": {
+    "location": {
       "type": "customField",
       "customField": "plugin::google-maps.location-picker"
     },
-    "Negotiable": {
+    "negotiable": {
       "type": "boolean",
       "default": false,
       "pluginOptions": {
@@ -77,7 +77,7 @@
         }
       }
     },
-    "Description": {
+    "description": {
       "type": "text",
       "pluginOptions": {
         "i18n": {
@@ -91,8 +91,7 @@
           "localized": true
         }
       },
-      "type": "uid",
-      "targetField": "Title"
+      "type": "uid"
     },
     "featuredImage": {
       "type": "media",
@@ -109,6 +108,18 @@
           "localized": true
         }
       }
+    },
+    "status": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Inactive"
+      ]
     }
   }
 }

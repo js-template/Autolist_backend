@@ -7,20 +7,20 @@
   },
   "options": {},
   "attributes": {
-    "Label": {
+    "label": {
       "type": "string"
     },
-    "Link": {
+    "link": {
       "type": "string"
     },
-    "Type": {
+    "type": {
       "type": "enumeration",
       "enum": [
         "External",
         "Internal"
       ]
     },
-    "Target": {
+    "target": {
       "type": "enumeration",
       "enum": [
         "_blank",

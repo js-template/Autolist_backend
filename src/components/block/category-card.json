@@ -7,18 +7,18 @@
   },
   "options": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "Categories": {
+    "categories": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::ads-category.ads-category"
     },
-    "Button": {
+    "button": {
       "type": "component",
       "repeatable": false,
       "component": "component.link"

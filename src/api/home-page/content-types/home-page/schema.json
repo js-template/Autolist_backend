@@ -16,55 +16,40 @@
     }
   },
   "attributes": {
-    "Banner": {
-      "type": "component",
-      "repeatable": false,
+    "title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "banner.banner-one"
+      "type": "string"
     },
-    "AdsCategory": {
-      "type": "component",
-      "repeatable": false,
+    "description": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "component.titles"
+      "type": "text"
     },
-    "AdsBlock": {
-      "type": "component",
-      "repeatable": false,
+    "blocks": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "block.ad-card"
-    },
-    "CategoryBlock": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "block.category-card"
-    },
-    "ReviewBlock": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "block.review-card"
+      "type": "dynamiczone",
+      "components": [
+        "banner.banner-one",
+        "block.ad-card",
+        "block.blog-card",
+        "block.category-card",
+        "block.location-card",
+        "block.review-card",
+        "forms.filter",
+        "forms.seaech-form",
+        "forms.search-filter"
+      ]
     }
   }
 }

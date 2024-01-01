@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_forms_filters",
+  "info": {
+    "displayName": "Filter",
+    "icon": "collapse"
+  },
+  "options": {},
+  "attributes": {
+    "filterByCategory": {
+      "type": "string"
+    },
+    "filterByCondition": {
+      "type": "string"
+    },
+    "sort": {
+      "type": "enumeration",
+      "enum": [
+        "Hight to Low",
+        "Low to High"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

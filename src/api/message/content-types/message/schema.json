@@ -11,12 +11,12 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "Sender": {
+    "seller": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "Receiver": {
+    "buyer": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"

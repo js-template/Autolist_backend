@@ -5,5 +5,11 @@ module.exports = ({ env }) => ({
     keys: env.array('APP_KEYS'),
   },
   url: env('URL'),
-  proxy: true
+  proxy: true,
+  settings: {
+    timeout: {
+      upload: env.int('SERVER_TIMEOUT_UPLOAD', 60000), // Default timeout is 60 seconds
+    },
+  },
 });
+

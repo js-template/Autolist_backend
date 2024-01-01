@@ -7,13 +7,13 @@
   },
   "options": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "Button": {
+    "button": {
       "type": "component",
       "repeatable": false,
       "component": "component.link"

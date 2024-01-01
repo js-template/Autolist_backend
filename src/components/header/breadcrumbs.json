@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_header_breadcrumbs",
+  "info": {
+    "displayName": "Breadcrumbs",
+    "icon": "manyWays"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "showBreadcrumb": {
+      "type": "boolean"
+    },
+    "style": {
+      "type": "json"
+    }
+  }
+}

@@ -587,7 +587,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -616,6 +615,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    name: Attribute.String;
+    avatar: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -779,38 +780,38 @@ export interface ApiAdsCategoryAdsCategory extends Schema.CollectionType {
     };
   };
   attributes: {
-    Title: Attribute.String &
+    title: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Image: Attribute.Media &
+    image: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Description: Attribute.Text &
+    description: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Link: Attribute.Component<'component.link'> &
+    link: Attribute.Component<'component.link'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Icon: Attribute.String &
+    icon: Attribute.String &
       Attribute.CustomField<'plugin::react-icons.icon'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    slug: Attribute.UID<'api::ads-category.ads-category', 'Title'> &
+    slug: Attribute.UID &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -857,31 +858,31 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     };
   };
   attributes: {
-    Banner: Attribute.Component<'banner.banner-one'> &
+    title: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    AdsCategory: Attribute.Component<'component.titles'> &
+    description: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    AdsBlock: Attribute.Component<'block.ad-card'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    CategoryBlock: Attribute.Component<'block.category-card'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    ReviewBlock: Attribute.Component<'block.review-card'> &
+    blocks: Attribute.DynamicZone<
+      [
+        'banner.banner-one',
+        'block.ad-card',
+        'block.blog-card',
+        'block.category-card',
+        'block.location-card',
+        'block.review-card',
+        'forms.filter',
+        'forms.seaech-form',
+        'forms.search-filter'
+      ]
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1011,14 +1012,14 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
     };
   };
   attributes: {
-    Title: Attribute.String &
+    title: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Condition: Attribute.Enumeration<['Used', 'New']> &
+    condition: Attribute.Enumeration<['Used', 'New']> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1030,39 +1031,45 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    Price: Attribute.BigInteger &
+    price: Attribute.BigInteger &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Category: Attribute.Relation<
+    category: Attribute.Relation<
       'api::manage-ad.manage-ad',
       'oneToOne',
       'api::ads-category.ads-category'
     >;
-    Location: Attribute.JSON &
+    location: Attribute.JSON &
       Attribute.CustomField<'plugin::google-maps.location-picker'>;
-    Negotiable: Attribute.Boolean &
+    negotiable: Attribute.Boolean &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }> &
       Attribute.DefaultTo<false>;
-    Description: Attribute.Text &
+    description: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    slug: Attribute.UID<'api::manage-ad.manage-ad', 'Title'> &
+    slug: Attribute.UID &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     featuredImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    status: Attribute.Enumeration<['Active', 'Inactive']> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1104,12 +1111,12 @@ export interface ApiMessageMessage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Sender: Attribute.Relation<
+    seller: Attribute.Relation<
       'api::message.message',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    Receiver: Attribute.Relation<
+    buyer: Attribute.Relation<
       'api::message.message',
       'oneToOne',
       'plugin::users-permissions.user'
@@ -1138,6 +1145,42 @@ export interface ApiMessageMessage extends Schema.CollectionType {
   };
 }
 
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    slug: Attribute.UID<'api::page.page', 'title'>;
+    blocks: Attribute.DynamicZone<
+      [
+        'banner.banner-one',
+        'block.ad-card',
+        'block.category-card',
+        'block.location-card',
+        'block.review-card',
+        'forms.search-filter',
+        'block.blog-card',
+        'header.breadcrumbs'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPostPost extends Schema.CollectionType {
   collectionName: 'posts';
   info: {
@@ -1150,12 +1193,12 @@ export interface ApiPostPost extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String;
-    slug: Attribute.UID<'api::post.post', 'Title'>;
-    Description: Attribute.RichText;
-    FeaturedImage: Attribute.Media;
-    Gallery: Attribute.Media;
-    Excerpt: Attribute.Text;
+    title: Attribute.String;
+    slug: Attribute.UID;
+    description: Attribute.RichText;
+    featuredImage: Attribute.Media;
+    gallery: Attribute.Media;
+    excerpt: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1189,6 +1232,7 @@ declare module '@strapi/types' {
       'api::layout.layout': ApiLayoutLayout;
       'api::manage-ad.manage-ad': ApiManageAdManageAd;
       'api::message.message': ApiMessageMessage;
+      'api::page.page': ApiPagePage;
       'api::post.post': ApiPostPost;
     }
   }

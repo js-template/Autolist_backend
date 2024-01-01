@@ -8,9 +8,10 @@ export interface BannerBannerOne extends Schema.Component {
     description: '';
   };
   attributes: {
-    Title: Attribute.String;
-    Description: Attribute.Text;
-    Image: Attribute.Component<'component.image'>;
+    title: Attribute.String;
+    description: Attribute.Text;
+    search: Attribute.Component<'forms.seaech-form'>;
+    image: Attribute.Media;
   };
 }
 
@@ -22,14 +23,28 @@ export interface BlockAdCard extends Schema.Component {
     description: '';
   };
   attributes: {
-    Title: Attribute.String;
-    Description: Attribute.Text;
-    ShowAds: Attribute.Relation<
+    title: Attribute.String;
+    description: Attribute.Text;
+    showAds: Attribute.Relation<
       'block.ad-card',
       'oneToMany',
       'api::manage-ad.manage-ad'
     >;
-    Button: Attribute.Component<'component.link'>;
+    button: Attribute.Component<'component.link'>;
+  };
+}
+
+export interface BlockBlogCard extends Schema.Component {
+  collectionName: 'components_block_blog_cards';
+  info: {
+    displayName: 'BlogCard';
+    icon: 'collapse';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    posts: Attribute.Relation<'block.blog-card', 'oneToMany', 'api::post.post'>;
+    button: Attribute.Component<'component.link'>;
   };
 }
 
@@ -41,14 +56,14 @@ export interface BlockCategoryCard extends Schema.Component {
     description: '';
   };
   attributes: {
-    Title: Attribute.String;
-    Description: Attribute.Text;
-    Categories: Attribute.Relation<
+    title: Attribute.String;
+    description: Attribute.Text;
+    categories: Attribute.Relation<
       'block.category-card',
       'oneToMany',
       'api::ads-category.ads-category'
     >;
-    Button: Attribute.Component<'component.link'>;
+    button: Attribute.Component<'component.link'>;
   };
 }
 
@@ -76,10 +91,10 @@ export interface BlockReviewCard extends Schema.Component {
     description: '';
   };
   attributes: {
-    Title: Attribute.String;
-    Description: Attribute.Text;
-    Button: Attribute.Component<'component.link'>;
-    Reviews: Attribute.Component<'component.icon-box', true>;
+    title: Attribute.String;
+    description: Attribute.Text;
+    button: Attribute.Component<'component.link'>;
+    reviews: Attribute.Component<'component.icon-box', true>;
   };
 }
 
@@ -91,11 +106,14 @@ export interface ComponentIconBox extends Schema.Component {
     description: '';
   };
   attributes: {
-    Title: Attribute.String;
-    Description: Attribute.Text;
-    Icon: Attribute.Media;
-    Link: Attribute.String;
-    LinkType: Attribute.Enumeration<['Internal', 'External']>;
+    name: Attribute.String;
+    feedback: Attribute.Text;
+    avatar: Attribute.Media;
+    link: Attribute.String;
+    type: Attribute.Enumeration<['Internal', 'External']>;
+    star: Attribute.Enumeration<
+      ['One Star', 'Two Star', 'Three Start', 'Four Star', 'Five Star']
+    >;
   };
 }
 
@@ -104,11 +122,12 @@ export interface ComponentImage extends Schema.Component {
   info: {
     displayName: 'Image';
     icon: 'paperPlane';
+    description: '';
   };
   attributes: {
-    Image: Attribute.Media;
+    image: Attribute.Media;
     Alt: Attribute.String;
-    Link: Attribute.String;
+    link: Attribute.String;
   };
 }
 
@@ -120,10 +139,21 @@ export interface ComponentLink extends Schema.Component {
     description: '';
   };
   attributes: {
-    Label: Attribute.String;
-    Link: Attribute.String;
-    Type: Attribute.Enumeration<['External', 'Internal']>;
-    Target: Attribute.Enumeration<['_blank', '_self']>;
+    label: Attribute.String;
+    link: Attribute.String;
+    type: Attribute.Enumeration<['External', 'Internal']>;
+    target: Attribute.Enumeration<['_blank', '_self']>;
+  };
+}
+
+export interface ComponentSearch extends Schema.Component {
+  collectionName: 'components_component_searches';
+  info: {
+    displayName: 'search';
+    icon: 'arrowRight';
+  };
+  attributes: {
+    test: Attribute.String;
   };
 }
 
@@ -132,11 +162,12 @@ export interface ComponentSocialLink extends Schema.Component {
   info: {
     displayName: 'SocialLink';
     icon: 'arrowRight';
+    description: '';
   };
   attributes: {
-    Title: Attribute.String;
-    URL: Attribute.String;
-    Icon: Attribute.String & Attribute.CustomField<'plugin::react-icons.icon'>;
+    title: Attribute.String;
+    link: Attribute.String;
+    icon: Attribute.String & Attribute.CustomField<'plugin::react-icons.icon'>;
   };
 }
 
@@ -148,9 +179,67 @@ export interface ComponentTitles extends Schema.Component {
     description: '';
   };
   attributes: {
-    Title: Attribute.String;
-    Description: Attribute.Text;
-    Button: Attribute.Component<'component.link'>;
+    title: Attribute.String;
+    description: Attribute.Text;
+    button: Attribute.Component<'component.link'>;
+  };
+}
+
+export interface FormsFilter extends Schema.Component {
+  collectionName: 'components_forms_filters';
+  info: {
+    displayName: 'Filter';
+    icon: 'collapse';
+  };
+  attributes: {
+    filterByCategory: Attribute.String;
+    filterByCondition: Attribute.String;
+    sort: Attribute.Enumeration<['Hight to Low', 'Low to High']>;
+    title: Attribute.String;
+  };
+}
+
+export interface FormsSeaechForm extends Schema.Component {
+  collectionName: 'components_forms_seaech_forms';
+  info: {
+    displayName: 'Search';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    searchByWords: Attribute.String;
+    searchByLocation: Attribute.String;
+    button: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
+export interface FormsSearchFilter extends Schema.Component {
+  collectionName: 'components_forms_search_filters';
+  info: {
+    displayName: 'SearchFilter';
+    icon: 'collapse';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    search: Attribute.Component<'forms.seaech-form'>;
+    filter: Attribute.Component<'forms.filter'>;
+    description: Attribute.Text;
+  };
+}
+
+export interface HeaderBreadcrumbs extends Schema.Component {
+  collectionName: 'components_header_breadcrumbs';
+  info: {
+    displayName: 'Breadcrumbs';
+    icon: 'manyWays';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    showBreadcrumb: Attribute.Boolean;
+    style: Attribute.JSON;
   };
 }
 
@@ -163,7 +252,7 @@ export interface HeaderHeader extends Schema.Component {
   };
   attributes: {
     label: Attribute.String;
-    Link: Attribute.String;
+    link: Attribute.String;
   };
 }
 
@@ -175,8 +264,8 @@ export interface HeaderLogo extends Schema.Component {
     description: '';
   };
   attributes: {
-    Logo: Attribute.Media;
-    URL: Attribute.String;
+    logo: Attribute.Media;
+    link: Attribute.String;
   };
 }
 
@@ -188,7 +277,7 @@ export interface HeaderTopbar extends Schema.Component {
     description: '';
   };
   attributes: {
-    Announcement: Attribute.String;
+    announcement: Attribute.String;
     menu: Attribute.Component<'component.link', true>;
   };
 }
@@ -201,10 +290,10 @@ export interface WidgetFooterOne extends Schema.Component {
     description: '';
   };
   attributes: {
-    Title: Attribute.String;
-    Description: Attribute.Text;
-    Logo: Attribute.Media;
-    SocialLink: Attribute.Component<'component.social-link', true>;
+    title: Attribute.String;
+    description: Attribute.Text;
+    logo: Attribute.Media;
+    socialLink: Attribute.Component<'component.social-link', true>;
   };
 }
 
@@ -213,10 +302,11 @@ export interface WidgetFooterTwo extends Schema.Component {
   info: {
     displayName: 'FooterTwo';
     icon: 'arrowRight';
+    description: '';
   };
   attributes: {
-    Title: Attribute.String;
-    Description: Attribute.Text;
+    title: Attribute.String;
+    description: Attribute.Text;
     FooterMenu: Attribute.Component<'component.link', true>;
   };
 }
@@ -226,14 +316,20 @@ declare module '@strapi/types' {
     export interface Components {
       'banner.banner-one': BannerBannerOne;
       'block.ad-card': BlockAdCard;
+      'block.blog-card': BlockBlogCard;
       'block.category-card': BlockCategoryCard;
       'block.location-card': BlockLocationCard;
       'block.review-card': BlockReviewCard;
       'component.icon-box': ComponentIconBox;
       'component.image': ComponentImage;
       'component.link': ComponentLink;
+      'component.search': ComponentSearch;
       'component.social-link': ComponentSocialLink;
       'component.titles': ComponentTitles;
+      'forms.filter': FormsFilter;
+      'forms.seaech-form': FormsSeaechForm;
+      'forms.search-filter': FormsSearchFilter;
+      'header.breadcrumbs': HeaderBreadcrumbs;
       'header.header': HeaderHeader;
       'header.logo': HeaderLogo;
       'header.topbar': HeaderTopbar;

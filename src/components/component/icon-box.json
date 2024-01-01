@@ -7,13 +7,13 @@
   },
   "options": {},
   "attributes": {
-    "Title": {
+    "name": {
       "type": "string"
     },
-    "Description": {
+    "feedback": {
       "type": "text"
     },
-    "Icon": {
+    "avatar": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -24,14 +24,24 @@
         "audios"
       ]
     },
-    "Link": {
+    "link": {
       "type": "string"
     },
-    "LinkType": {
+    "type": {
       "type": "enumeration",
       "enum": [
         "Internal",
         "External"
+      ]
+    },
+    "star": {
+      "type": "enumeration",
+      "enum": [
+        "One Star",
+        "Two Star",
+        "Three Start",
+        "Four Star",
+        "Five Star"
       ]
     }
   }

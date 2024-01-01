@@ -2,24 +2,26 @@
   "collectionName": "components_component_images",
   "info": {
     "displayName": "Image",
-    "icon": "paperPlane"
+    "icon": "paperPlane",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Image": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "Alt": {
       "type": "string"
     },
-    "Link": {
+    "link": {
       "type": "string"
     }
   }

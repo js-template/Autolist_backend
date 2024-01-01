@@ -7,7 +7,7 @@
   },
   "options": {},
   "attributes": {
-    "Logo": {
+    "logo": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -15,7 +15,7 @@
         "images"
       ]
     },
-    "URL": {
+    "link": {
       "type": "string"
     }
   }

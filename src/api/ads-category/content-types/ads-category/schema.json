@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -24,7 +24,7 @@
         }
       }
     },
-    "Image": {
+    "image": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -40,7 +40,7 @@
         }
       }
     },
-    "Description": {
+    "description": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -48,7 +48,7 @@
       },
       "type": "text"
     },
-    "Link": {
+    "link": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -58,7 +58,7 @@
       },
       "component": "component.link"
     },
-    "Icon": {
+    "icon": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -73,8 +73,7 @@
           "localized": true
         }
       },
-      "type": "uid",
-      "targetField": "Title"
+      "type": "uid"
     }
   }
 }

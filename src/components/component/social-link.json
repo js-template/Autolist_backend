@@ -2,17 +2,18 @@
   "collectionName": "components_component_social_links",
   "info": {
     "displayName": "SocialLink",
-    "icon": "arrowRight"
+    "icon": "arrowRight",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "URL": {
+    "link": {
       "type": "string"
     },
-    "Icon": {
+    "icon": {
       "type": "customField",
       "customField": "plugin::react-icons.icon"
     }
