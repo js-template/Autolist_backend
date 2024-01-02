@@ -85,6 +85,16 @@
         }
       },
       "component": "widget.footer-two"
+    },
+    "adminMenu": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "component.link"
     }
   }
 }

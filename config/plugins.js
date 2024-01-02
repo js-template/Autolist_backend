@@ -38,5 +38,9 @@ module.exports = ({ env }) => ({
   },
    "react-icons": true,
 
+  'test': {
+    enabled: true,
+    resolve: './src/plugins/test'
+  }
 
 });
