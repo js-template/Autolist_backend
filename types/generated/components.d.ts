@@ -146,6 +146,19 @@ export interface ComponentLink extends Schema.Component {
   };
 }
 
+export interface ComponentMetaData extends Schema.Component {
+  collectionName: 'components_component_meta_data';
+  info: {
+    displayName: 'MetaData';
+    icon: 'chartBubble';
+    description: '';
+  };
+  attributes: {
+    key: Attribute.String;
+    value: Attribute.String;
+  };
+}
+
 export interface ComponentSearch extends Schema.Component {
   collectionName: 'components_component_searches';
   info: {
@@ -282,6 +295,23 @@ export interface HeaderTopbar extends Schema.Component {
   };
 }
 
+export interface TablePricing extends Schema.Component {
+  collectionName: 'components_table_pricings';
+  info: {
+    displayName: 'Pricing';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    button: Attribute.Component<'component.link'>;
+    price: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+    table: Attribute.Component<'component.meta-data', true>;
+    type: Attribute.Enumeration<['Monthly', 'Yearly']>;
+  };
+}
+
 export interface WidgetFooterOne extends Schema.Component {
   collectionName: 'components_widget_footer_ones';
   info: {
@@ -323,6 +353,7 @@ declare module '@strapi/types' {
       'component.icon-box': ComponentIconBox;
       'component.image': ComponentImage;
       'component.link': ComponentLink;
+      'component.meta-data': ComponentMetaData;
       'component.search': ComponentSearch;
       'component.social-link': ComponentSocialLink;
       'component.titles': ComponentTitles;
@@ -333,6 +364,7 @@ declare module '@strapi/types' {
       'header.header': HeaderHeader;
       'header.logo': HeaderLogo;
       'header.topbar': HeaderTopbar;
+      'table.pricing': TablePricing;
       'widget.footer-one': WidgetFooterOne;
       'widget.footer-two': WidgetFooterTwo;
     }

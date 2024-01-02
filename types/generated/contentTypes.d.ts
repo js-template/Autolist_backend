@@ -1099,6 +1099,38 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
   };
 }
 
+export interface ApiMembershipMembership extends Schema.SingleType {
+  collectionName: 'memberships';
+  info: {
+    singularName: 'membership';
+    pluralName: 'memberships';
+    displayName: 'Membership';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    table: Attribute.DynamicZone<['table.pricing']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::membership.membership',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::membership.membership',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMessageMessage extends Schema.CollectionType {
   collectionName: 'messages';
   info: {
@@ -1231,6 +1263,7 @@ declare module '@strapi/types' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::layout.layout': ApiLayoutLayout;
       'api::manage-ad.manage-ad': ApiManageAdManageAd;
+      'api::membership.membership': ApiMembershipMembership;
       'api::message.message': ApiMessageMessage;
       'api::page.page': ApiPagePage;
       'api::post.post': ApiPostPost;
