@@ -120,6 +120,11 @@
         "Active",
         "Inactive"
       ]
+    },
+    "seller": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
