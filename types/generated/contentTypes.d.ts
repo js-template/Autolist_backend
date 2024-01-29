@@ -1247,6 +1247,38 @@ export interface ApiPostPost extends Schema.CollectionType {
   };
 }
 
+export interface ApiSidebarSidebar extends Schema.SingleType {
+  collectionName: 'sidebars';
+  info: {
+    singularName: 'sidebar';
+    pluralName: 'sidebars';
+    displayName: 'Sidebar';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    adsSidebar: Attribute.DynamicZone<['widget.contact-form']>;
+    blogSIdebar: Attribute.DynamicZone<['widget.contact-form']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sidebar.sidebar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sidebar.sidebar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1273,6 +1305,7 @@ declare module '@strapi/types' {
       'api::message.message': ApiMessageMessage;
       'api::page.page': ApiPagePage;
       'api::post.post': ApiPostPost;
+      'api::sidebar.sidebar': ApiSidebarSidebar;
     }
   }
 }

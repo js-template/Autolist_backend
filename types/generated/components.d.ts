@@ -12,6 +12,7 @@ export interface BannerBannerOne extends Schema.Component {
     description: Attribute.Text;
     search: Attribute.Component<'forms.seaech-form'>;
     image: Attribute.Media;
+    style: Attribute.JSON;
   };
 }
 
@@ -312,6 +313,18 @@ export interface TablePricing extends Schema.Component {
   };
 }
 
+export interface WidgetContactForm extends Schema.Component {
+  collectionName: 'components_widget_contact_forms';
+  info: {
+    displayName: 'ContactForm';
+    icon: 'envelop';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+  };
+}
+
 export interface WidgetFooterOne extends Schema.Component {
   collectionName: 'components_widget_footer_ones';
   info: {
@@ -365,6 +378,7 @@ declare module '@strapi/types' {
       'header.logo': HeaderLogo;
       'header.topbar': HeaderTopbar;
       'table.pricing': TablePricing;
+      'widget.contact-form': WidgetContactForm;
       'widget.footer-one': WidgetFooterOne;
       'widget.footer-two': WidgetFooterTwo;
     }

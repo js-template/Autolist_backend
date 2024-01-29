@@ -36,11 +36,8 @@ module.exports = ({ env }) => ({
       defaultDepth: 4, // Default is 5
     }
   },
-   "react-icons": true,
+  "react-icons": true,
 
-  'test': {
-    enabled: true,
-    resolve: './src/plugins/test'
-  }
+
 
 });
