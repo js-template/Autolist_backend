@@ -1081,6 +1081,11 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    seller: Attribute.Relation<
+      'api::manage-ad.manage-ad',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
