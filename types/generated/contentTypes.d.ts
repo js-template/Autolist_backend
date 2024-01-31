@@ -1264,8 +1264,12 @@ export interface ApiSidebarSidebar extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    adsSidebar: Attribute.DynamicZone<['widget.contact-form']>;
-    blogSIdebar: Attribute.DynamicZone<['widget.contact-form']>;
+    adsSidebar: Attribute.DynamicZone<
+      ['widget.contact-form', 'widget.safety-tips']
+    >;
+    blogSIdebar: Attribute.DynamicZone<
+      ['widget.contact-form', 'widget.safety-tips']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

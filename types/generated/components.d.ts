@@ -185,6 +185,17 @@ export interface ComponentSocialLink extends Schema.Component {
   };
 }
 
+export interface ComponentTextField extends Schema.Component {
+  collectionName: 'components_component_text_fields';
+  info: {
+    displayName: 'Text Field';
+    icon: 'bulletList';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
 export interface ComponentTitles extends Schema.Component {
   collectionName: 'components_component_titles';
   info: {
@@ -354,6 +365,19 @@ export interface WidgetFooterTwo extends Schema.Component {
   };
 }
 
+export interface WidgetSafetyTips extends Schema.Component {
+  collectionName: 'components_widget_safety_tips';
+  info: {
+    displayName: 'SafetyTips';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    lists: Attribute.Component<'component.text-field', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -369,6 +393,7 @@ declare module '@strapi/types' {
       'component.meta-data': ComponentMetaData;
       'component.search': ComponentSearch;
       'component.social-link': ComponentSocialLink;
+      'component.text-field': ComponentTextField;
       'component.titles': ComponentTitles;
       'forms.filter': FormsFilter;
       'forms.seaech-form': FormsSeaechForm;
@@ -381,6 +406,7 @@ declare module '@strapi/types' {
       'widget.contact-form': WidgetContactForm;
       'widget.footer-one': WidgetFooterOne;
       'widget.footer-two': WidgetFooterTwo;
+      'widget.safety-tips': WidgetSafetyTips;
     }
   }
 }
