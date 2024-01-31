@@ -10,7 +10,7 @@ Icon
 .Trashes
 ._*
 pnpm-lock.yaml
-
+.yarn.lock
 
 ############################
 # Linux
@@ -114,3 +114,4 @@ exports
 *.cache
 build
 .strapi-updater.json
+yarn.lock
