@@ -15,13 +15,15 @@
     "adsSidebar": {
       "type": "dynamiczone",
       "components": [
-        "widget.contact-form"
+        "widget.contact-form",
+        "widget.safety-tips"
       ]
     },
     "blogSIdebar": {
       "type": "dynamiczone",
       "components": [
-        "widget.contact-form"
+        "widget.contact-form",
+        "widget.safety-tips"
       ]
     }
   }

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_component_text_fields",
+  "info": {
+    "displayName": "Text Field",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
