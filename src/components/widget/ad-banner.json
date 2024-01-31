@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_widget_ad_banners",
+  "info": {
+    "displayName": "Ad Banner",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "alt": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

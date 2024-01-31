@@ -16,14 +16,16 @@
       "type": "dynamiczone",
       "components": [
         "widget.contact-form",
-        "widget.safety-tips"
+        "widget.safety-tips",
+        "widget.ad-banner"
       ]
     },
     "blogSIdebar": {
       "type": "dynamiczone",
       "components": [
         "widget.contact-form",
-        "widget.safety-tips"
+        "widget.safety-tips",
+        "widget.ad-banner"
       ]
     }
   }

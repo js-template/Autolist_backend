@@ -324,6 +324,19 @@ export interface TablePricing extends Schema.Component {
   };
 }
 
+export interface WidgetAdBanner extends Schema.Component {
+  collectionName: 'components_widget_ad_banners';
+  info: {
+    displayName: 'Ad Banner';
+    icon: 'picture';
+  };
+  attributes: {
+    image: Attribute.Media;
+    alt: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface WidgetContactForm extends Schema.Component {
   collectionName: 'components_widget_contact_forms';
   info: {
@@ -403,6 +416,7 @@ declare module '@strapi/types' {
       'header.logo': HeaderLogo;
       'header.topbar': HeaderTopbar;
       'table.pricing': TablePricing;
+      'widget.ad-banner': WidgetAdBanner;
       'widget.contact-form': WidgetContactForm;
       'widget.footer-one': WidgetFooterOne;
       'widget.footer-two': WidgetFooterTwo;
