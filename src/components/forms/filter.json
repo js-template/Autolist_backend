@@ -2,25 +2,35 @@
   "collectionName": "components_forms_filters",
   "info": {
     "displayName": "Filter",
-    "icon": "collapse"
+    "icon": "collapse",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "filterByCategory": {
-      "type": "string"
-    },
-    "filterByCondition": {
-      "type": "string"
-    },
-    "sort": {
-      "type": "enumeration",
-      "enum": [
-        "Hight to Low",
-        "Low to High"
-      ]
-    },
     "title": {
       "type": "string"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ads-category.ads-category"
+    },
+    "sort": {
+      "type": "customField",
+      "options": [
+        "Hight to Low:descending",
+        "Low to High:ascending",
+        "Featured:featured"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "condition": {
+      "type": "customField",
+      "options": [
+        "New:New",
+        "Used:Used"
+      ],
+      "customField": "plugin::multi-select.multi-select"
     }
   }
 }
