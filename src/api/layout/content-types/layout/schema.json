@@ -95,6 +95,16 @@
         }
       },
       "component": "component.link"
+    },
+    "sidebarMenu": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "component.link"
     }
   }
 }

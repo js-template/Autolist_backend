@@ -26,6 +26,10 @@
         "_blank",
         "_self"
       ]
+    },
+    "icon": {
+      "type": "customField",
+      "customField": "plugin::react-icons.icon"
     }
   }
 }

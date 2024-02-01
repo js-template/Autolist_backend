@@ -977,6 +977,12 @@ export interface ApiLayoutLayout extends Schema.SingleType {
           localized: true;
         };
       }>;
+    sidebarMenu: Attribute.Component<'component.link', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -144,6 +144,7 @@ export interface ComponentLink extends Schema.Component {
     link: Attribute.String;
     type: Attribute.Enumeration<['External', 'Internal']>;
     target: Attribute.Enumeration<['_blank', '_self']>;
+    icon: Attribute.String & Attribute.CustomField<'plugin::react-icons.icon'>;
   };
 }
 
@@ -215,12 +216,29 @@ export interface FormsFilter extends Schema.Component {
   info: {
     displayName: 'Filter';
     icon: 'collapse';
+    description: '';
   };
   attributes: {
-    filterByCategory: Attribute.String;
-    filterByCondition: Attribute.String;
-    sort: Attribute.Enumeration<['Hight to Low', 'Low to High']>;
     title: Attribute.String;
+    categories: Attribute.Relation<
+      'forms.filter',
+      'oneToMany',
+      'api::ads-category.ads-category'
+    >;
+    sort: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          'Hight to Low:descending',
+          'Low to High:ascending',
+          'Featured:featured'
+        ]
+      >;
+    condition: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['New:New', 'Used:Used']
+      >;
   };
 }
 
