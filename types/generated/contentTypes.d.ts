@@ -817,6 +817,12 @@ export interface ApiAdsCategoryAdsCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -883,6 +889,12 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
         'forms.search-filter'
       ]
     > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1092,6 +1104,12 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1220,6 +1238,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'header.breadcrumbs'
       ]
     >;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1248,6 +1267,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     featuredImage: Attribute.Media;
     gallery: Attribute.Media;
     excerpt: Attribute.Text;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -5,6 +5,7 @@
 import googleMaps from "@amicaldo/strapi-google-maps/strapi-admin";
 import colorPicker from "@strapi/plugin-color-picker/strapi-admin";
 import i18N from "@strapi/plugin-i18n/strapi-admin";
+import seo from "@strapi/plugin-seo/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import multiSelect from "strapi-plugin-multi-select/strapi-admin";
 import reactIcons from "strapi-plugin-react-icons/strapi-admin";
@@ -15,6 +16,7 @@ renderAdmin(document.getElementById("strapi"), {
     "google-maps": googleMaps,
     "color-picker": colorPicker,
     i18n: i18N,
+    seo: seo,
     "users-permissions": usersPermissions,
     "multi-select": multiSelect,
     "react-icons": reactIcons,
