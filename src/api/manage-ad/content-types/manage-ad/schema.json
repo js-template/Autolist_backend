@@ -64,10 +64,6 @@
       "relation": "oneToOne",
       "target": "api::ads-category.ads-category"
     },
-    "location": {
-      "type": "customField",
-      "customField": "plugin::google-maps.location-picker"
-    },
     "negotiable": {
       "type": "boolean",
       "default": false,
@@ -135,6 +131,15 @@
         }
       },
       "component": "shared.seo"
+    },
+    "location": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "customField": "plugin::location-field.location"
     }
   }
 }

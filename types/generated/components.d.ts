@@ -229,9 +229,12 @@ export interface FormsFilter extends Schema.Component {
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
         [
-          'Hight to Low:descending',
-          'Low to High:ascending',
-          'Featured:featured'
+          'Hight to Low:price-desc',
+          'Low to High:price-asc',
+          'A to Z:title-desc',
+          'Z to A:title-asc',
+          'New to Old:date-desc',
+          'Old to New:date-asc'
         ]
       >;
     condition: Attribute.JSON &
