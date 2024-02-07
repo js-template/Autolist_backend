@@ -18,9 +18,12 @@
     "sort": {
       "type": "customField",
       "options": [
-        "Hight to Low : descending",
-        "Low to High : ascending",
-        "Featured : featured"
+        "Hight to Low:price-desc",
+        "Low to High:price-asc",
+        "A to Z:title-desc",
+        "Z to A:title-asc",
+        "New to Old:date-desc",
+        "Old to New:date-asc"
       ],
       "customField": "plugin::multi-select.multi-select"
     },
