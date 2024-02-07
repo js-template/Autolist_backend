@@ -1066,8 +1066,6 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
       'oneToOne',
       'api::ads-category.ads-category'
     >;
-    location: Attribute.JSON &
-      Attribute.CustomField<'plugin::google-maps.location-picker'>;
     negotiable: Attribute.Boolean &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1105,6 +1103,13 @@ export interface ApiManageAdManageAd extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    location: Attribute.JSON &
+      Attribute.CustomField<'plugin::location-field.location'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
