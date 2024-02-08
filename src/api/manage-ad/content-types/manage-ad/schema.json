@@ -140,6 +140,15 @@
       },
       "type": "customField",
       "customField": "plugin::location-field.location"
+    },
+    "adBoost": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": false
     }
   }
 }
