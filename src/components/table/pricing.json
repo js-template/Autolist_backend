@@ -25,13 +25,6 @@
       "type": "component",
       "repeatable": true,
       "component": "component.meta-data"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Monthly",
-        "Yearly"
-      ]
     }
   }
 }
