@@ -38,6 +38,16 @@
       "type": "component",
       "repeatable": false,
       "component": "component.link"
+    },
+    "create_ads_limit": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "ads_boost_limit": {
+      "type": "biginteger",
+      "required": true,
+      "default": "0"
     }
   }
 }

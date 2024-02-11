@@ -8,10 +8,16 @@ const { createCoreRouter } = require("@strapi/strapi").factories;
 
 module.exports = createCoreRouter("api::manage-ad.manage-ad", {
   config: {
-    find: {
+    create: {
       policies: [
         // point to a registered policy
         "is-membership",
+      ],
+    },
+    update: {
+      policies: [
+        // point to a registered policy
+        "is-booster",
       ],
     },
   },

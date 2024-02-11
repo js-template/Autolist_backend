@@ -1247,6 +1247,12 @@ export interface ApiPackagePackage extends Schema.CollectionType {
     price: Attribute.Integer;
     frequency: Attribute.Enumeration<['Monthly', 'Yearly', 'One Time']>;
     button: Attribute.Component<'component.link'>;
+    create_ads_limit: Attribute.Integer &
+      Attribute.Required &
+      Attribute.DefaultTo<0>;
+    ads_boost_limit: Attribute.BigInteger &
+      Attribute.Required &
+      Attribute.DefaultTo<'0'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
