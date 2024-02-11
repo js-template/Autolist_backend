@@ -617,6 +617,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     name: Attribute.String;
     avatar: Attribute.Media;
+    membership: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::package.package'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1224,6 +1229,42 @@ export interface ApiMessageMessage extends Schema.CollectionType {
   };
 }
 
+export interface ApiPackagePackage extends Schema.CollectionType {
+  collectionName: 'packages';
+  info: {
+    singularName: 'package';
+    pluralName: 'packages';
+    displayName: 'Package';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    feature: Attribute.Component<'table.meta', true>;
+    price: Attribute.Integer;
+    frequency: Attribute.Enumeration<['Monthly', 'Yearly', 'One Time']>;
+    button: Attribute.Component<'component.link'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::package.package',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::package.package',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Schema.CollectionType {
   collectionName: 'pages';
   info: {
@@ -1350,6 +1391,7 @@ declare module '@strapi/types' {
       'api::manage-ad.manage-ad': ApiManageAdManageAd;
       'api::membership.membership': ApiMembershipMembership;
       'api::message.message': ApiMessageMessage;
+      'api::package.package': ApiPackagePackage;
       'api::page.page': ApiPagePage;
       'api::post.post': ApiPostPost;
       'api::sidebar.sidebar': ApiSidebarSidebar;

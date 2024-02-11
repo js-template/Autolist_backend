@@ -1,20 +1,25 @@
 module.exports = async (policyContext, config, { strapi }) => {
   // Assuming the user is authenticated and their membership information is available in the context
-  const userId = policyContext.state.auth.credentials.id;
+  const userId = policyContext.state.user;
   console.log("UserID", userId);
+  if (userId) {
+    return true;
+  }
 
   // Retrieve user's membership information from an API endpoint
   //   const userMembershipResponse = await strapi
   //     .query("membership")
   //     .findOne({ user: userId });
 
-  const entry = await strapi.entityService.findOne(
-    "api::membership.membership",
-    1,
-    { populate: "deep" }
-  );
+  //   const entry = await strapi.entityService.findOne(
+  //     "plugin::users-permissions.user",
+  //     userId,
+  //     {
+  //       populate: "*",
+  //     }
+  //   );
 
-  console.log("entry", entry.table);
+  // console.log("entry", entry);
 
   //   console.log("userMembershipResponse", userMembershipResponse);
 
@@ -49,5 +54,5 @@ module.exports = async (policyContext, config, { strapi }) => {
   //   }
 
   // For other routes or methods, allow access
-  return true;
+  return false;
 };

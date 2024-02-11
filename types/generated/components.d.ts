@@ -379,6 +379,18 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
+export interface TableMeta extends Schema.Component {
+  collectionName: 'components_table_metas';
+  info: {
+    displayName: 'meta';
+    icon: 'arrowRight';
+  };
+  attributes: {
+    key: Attribute.String;
+    value: Attribute.String;
+  };
+}
+
 export interface TablePricing extends Schema.Component {
   collectionName: 'components_table_pricings';
   info: {
@@ -392,7 +404,6 @@ export interface TablePricing extends Schema.Component {
     title: Attribute.String;
     description: Attribute.Text;
     table: Attribute.Component<'component.meta-data', true>;
-    type: Attribute.Enumeration<['Monthly', 'Yearly']>;
   };
 }
 
@@ -489,6 +500,7 @@ declare module '@strapi/types' {
       'header.topbar': HeaderTopbar;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
+      'table.meta': TableMeta;
       'table.pricing': TablePricing;
       'widget.ad-banner': WidgetAdBanner;
       'widget.contact-form': WidgetContactForm;
