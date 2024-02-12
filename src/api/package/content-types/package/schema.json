@@ -45,9 +45,9 @@
       "default": 0
     },
     "ads_boost_limit": {
-      "type": "biginteger",
+      "type": "integer",
       "required": true,
-      "default": "0"
+      "default": 0
     }
   }
 }

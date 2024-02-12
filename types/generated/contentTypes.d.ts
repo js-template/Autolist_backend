@@ -1250,9 +1250,9 @@ export interface ApiPackagePackage extends Schema.CollectionType {
     create_ads_limit: Attribute.Integer &
       Attribute.Required &
       Attribute.DefaultTo<0>;
-    ads_boost_limit: Attribute.BigInteger &
+    ads_boost_limit: Attribute.Integer &
       Attribute.Required &
-      Attribute.DefaultTo<'0'>;
+      Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
