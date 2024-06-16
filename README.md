@@ -1,6 +1,6 @@
 # Autolist- Classified Ads Headless Strapi Backend
 
-#### Frontend Repository [Here}(https://github.com/js-template/autolist)
+#### Frontend Repository [Here](https://github.com/js-template/autolist)
 
 ## One Click Deploy
 
