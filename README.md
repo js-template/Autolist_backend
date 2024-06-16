@@ -32,7 +32,27 @@ When developing locally this Strapi template will connect to the Postgres server
 
 - After your app is deployed, visit the `/admin` endpoint to create your admin user.
 - Railway's filesystem is ephemeral which is why any changes to the filesystem are not persisted between deploys. This is why, this template uses Cloudinary for media storage.
+  
+### 💁‍♀️ Frontend Setup (Next.js)
 
-  ## Your backend is Ready, Start the frontend from here
+1. Clone the frontend repository:
+    ```bash
+    git clone https://github.com/js-template/autolist
+    cd nextjs-frontend
+    ```
+
+2. Install the dependencies:
+    ```bash
+    pnpm install
+    # or
+    yarn install
+    ```
+
+3. Start the Next.js development server:
+    ```bash
+    pnpm dev
+    # or
+    yarn dev
+    ```
 
   
